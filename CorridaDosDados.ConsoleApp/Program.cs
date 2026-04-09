@@ -20,11 +20,17 @@ while (jogoAtivo)
 
     Console.WriteLine($"Você tirou {dadoJogador}! Sua posição atual: {posicaoJogador}");
 
-    // evento especial - Avanço extra
+    // evento especial - Avanço  e Recuo
     if (posicaoJogador == 5 || posicaoJogador == 10 || posicaoJogador == 15)
     {
         posicaoJogador += 3;
         Console.WriteLine("BÔNUS! Você caiu em uma casa de impulso e avançou +3 casas!");
+        Console.WriteLine($"Nova posição: {posicaoJogador}");
+    }
+    else if (posicaoJogador == 7 || posicaoJogador == 13 || posicaoJogador == 20)
+    {
+        posicaoJogador -= 2;
+        Console.WriteLine("RECUO! Você caiu em uma armadilha e voltou -2 casas!");
         Console.WriteLine($"Nova posição: {posicaoJogador}");
     }
 
@@ -46,11 +52,17 @@ while (jogoAtivo)
 
     Console.WriteLine($"O Computador tirou {dadoComputador}! Posição dele: {posicaoComputador}");
 
-    // evento especial - Avanço extra
+    // evento especial - Avanço e Recuo
     if (posicaoComputador == 5 || posicaoComputador == 10 || posicaoComputador == 15)
     {
         posicaoComputador += 3;
         Console.WriteLine("IMPULSO! O computador avançou +3 casas extras!");
+        Console.WriteLine($"Nova posição dele: {posicaoComputador}");
+    }
+    else if (posicaoComputador == 7 || posicaoComputador == 13 || posicaoComputador == 20)
+    {
+        posicaoComputador -= 2;
+        Console.WriteLine("O computador caiu em uma armadilha e recuou -2 casas!");
         Console.WriteLine($"Nova posição dele: {posicaoComputador}");
     }
 
