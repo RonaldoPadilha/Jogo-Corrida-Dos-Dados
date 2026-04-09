@@ -20,6 +20,14 @@ while (jogoAtivo)
 
     Console.WriteLine($"Você tirou {dadoJogador}! Sua posição atual: {posicaoJogador}");
 
+    // evento especial - Avanço extra
+    if (posicaoJogador == 5 || posicaoJogador == 10 || posicaoJogador == 15)
+    {
+        posicaoJogador += 3;
+        Console.WriteLine("BÔNUS! Você caiu em uma casa de impulso e avançou +3 casas!");
+        Console.WriteLine($"Nova posição: {posicaoJogador}");
+    }
+
     // Verificação de Vitória do Jogador
     if (posicaoJogador >= linhaChegada)
     {
@@ -31,12 +39,20 @@ while (jogoAtivo)
 
     // 2. VEZ DO COMPUTADOR
     Console.WriteLine("\nVez do Computador...");
-    Thread.Sleep(3000); // Pequena pausa para dar emoção
+    Thread.Sleep(2000); // Pequena pausa
 
     int dadoComputador = RandomNumberGenerator.GetInt32(1, 7);
     posicaoComputador += dadoComputador;
 
     Console.WriteLine($"O Computador tirou {dadoComputador}! Posição dele: {posicaoComputador}");
+
+    // evento especial - Avanço extra
+    if (posicaoComputador == 5 || posicaoComputador == 10 || posicaoComputador == 15)
+    {
+        posicaoComputador += 3;
+        Console.WriteLine("IMPULSO! O computador avançou +3 casas extras!");
+        Console.WriteLine($"Nova posição dele: {posicaoComputador}");
+    }
 
     // Verificação de Vitória do Computador
     if (posicaoComputador >= linhaChegada)
