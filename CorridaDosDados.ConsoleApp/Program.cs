@@ -107,6 +107,5 @@ while (jogoAtivo)
         }
     }
 }
-
 Console.WriteLine("\nFim de jogo. Pressione [ENTER] para sair.");
 Console.ReadKey();
