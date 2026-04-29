@@ -4,13 +4,11 @@ using System.Security.Cryptography;
 
 public class Jogador
 {
-    public static int ExecutarRodada
-        (
-        int posicaoJogador,
-        int limiteLinhaChegada,
-        int bonusAvancoExtra,
-        int penalidadeRecuo
-        )
+    public static int posicaoJogador = 0; // atributo
+    const int limiteLinhaChegada = 30;
+    const int bonusAvancoExtra = 3;
+    const int penalidadeRecuo = 2;
+    public static void ExecutarRodada()
     {
         Console.Clear();
         Console.WriteLine("--------------------------------------");
@@ -50,12 +48,14 @@ public class Jogador
             Console.WriteLine($"\nVocê está na posição: {posicaoJogador} de {limiteLinhaChegada}.");
         }
 
-        ApresentarMensagemDoJogador(posicaoJogador, limiteLinhaChegada);
-
-        return posicaoJogador;
+        ApresentarMensagemDoJogador(limiteLinhaChegada);
     }
 
-    static void ApresentarMensagemDoJogador(int posicaoJogador, int limiteLinhaChegada)
+    public static bool VenceuPartida()
+    {
+        return posicaoJogador >= limiteLinhaChegada; // true / false
+    }
+    private static void ApresentarMensagemDoJogador(int limiteLinhaChegada)
     {
         if (posicaoJogador >= limiteLinhaChegada)
         {

@@ -17,42 +17,32 @@
 */
 namespace JogoDosDados.ConsoleApp;
 
-using CorridaDosDados.ConsoleApp.Entidades;
 using JogoDosDados.ConsoleApp.Entidades;
 
 class Program
 {
     static void Main(string[] args)
     {
-        const int limiteLinhaChegada = 30;
-        const int bonusAvancoExtra = 3;
-        const int penalidadeRecuo = 2;
-
         while (true)
         {
-            int posicaoJogador = 0;
             int posicaoComputador = 0;
 
             while (true)
             {
                 // 1. Rodada do Jogador
-                posicaoJogador = Jogador.ExecutarRodada(
-                    posicaoJogador,
-                    limiteLinhaChegada,
-                    bonusAvancoExtra,
-                    penalidadeRecuo
-                    );
 
-                if (posicaoJogador >= limiteLinhaChegada)
+                Jogador.ExecutarRodada();
+
+                if (Jogador.VenceuPartida())
                     break;
 
-                // 3. Rodada do Computador
+                // 2. Rodada do Computador
                 posicaoComputador = Computador.ExecutarRodada(
                     posicaoComputador,
                     limiteLinhaChegada,
                     bonusAvancoExtra,
                     penalidadeRecuo
-                    );
+                );
 
                 if (posicaoComputador >= limiteLinhaChegada)
                     break;
