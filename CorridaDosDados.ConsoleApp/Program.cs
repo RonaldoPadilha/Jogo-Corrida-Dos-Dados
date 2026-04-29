@@ -19,6 +19,7 @@
 namespace JogoDosDados.ConsoleApp;
 
 using System.Security.Cryptography;
+using JogoDosDados.ConsoleApp.Entidades;
 
 class Program
 {
