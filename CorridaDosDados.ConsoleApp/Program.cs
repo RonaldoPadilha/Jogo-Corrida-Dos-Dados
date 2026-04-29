@@ -25,26 +25,21 @@ class Program
     {
         while (true)
         {
-            int posicaoComputador = 0;
+            Jogador.posicao = 0;
+            Computador.posicao = 0;
 
             while (true)
             {
                 // 1. Rodada do Jogador
-
                 Jogador.ExecutarRodada();
 
                 if (Jogador.VenceuPartida())
                     break;
 
                 // 2. Rodada do Computador
-                posicaoComputador = Computador.ExecutarRodada(
-                    posicaoComputador,
-                    limiteLinhaChegada,
-                    bonusAvancoExtra,
-                    penalidadeRecuo
-                );
+                Computador.ExecutarRodada();
 
-                if (posicaoComputador >= limiteLinhaChegada)
+                if (Computador.VenceuPartida())
                     break;
             }
 

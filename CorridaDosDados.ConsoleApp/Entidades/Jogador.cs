@@ -2,12 +2,13 @@ namespace JogoDosDados.ConsoleApp.Entidades;
 
 using System.Security.Cryptography;
 
-public class Jogador
+public static class Jogador
 {
-    public static int posicaoJogador = 0; // atributo
+    public static int posicao = 0; // atributo
     const int limiteLinhaChegada = 30;
     const int bonusAvancoExtra = 3;
     const int penalidadeRecuo = 2;
+
     public static void ExecutarRodada()
     {
         Console.Clear();
@@ -22,42 +23,43 @@ public class Jogador
 
         int resultadoJogador = RandomNumberGenerator.GetInt32(1, 7);
 
-        posicaoJogador += resultadoJogador;
+        posicao += resultadoJogador;
 
         Console.WriteLine("--------------------------------------");
         Console.WriteLine("O número sorteado foi: " + resultadoJogador);
         Console.WriteLine("--------------------------------------");
 
-        Console.WriteLine($"Você está na posição: {posicaoJogador} de {limiteLinhaChegada}.");
+        Console.WriteLine($"Você está na posição: {posicao} de {limiteLinhaChegada}.");
 
-        if (posicaoJogador == 5 || posicaoJogador == 10 || posicaoJogador == 15 || posicaoJogador == 25)
+        if (posicao == 5 || posicao == 10 || posicao == 15 || posicao == 25)
         {
             Console.WriteLine($"\nEvento: Avanço de {bonusAvancoExtra} casas!");
 
-            posicaoJogador += bonusAvancoExtra;
+            posicao += bonusAvancoExtra;
 
-            Console.WriteLine($"\nVocê está na posição: {posicaoJogador} de {limiteLinhaChegada}.");
+            Console.WriteLine($"\nVocê está na posição: {posicao} de {limiteLinhaChegada}.");
         }
 
-        else if (posicaoJogador == 7 || posicaoJogador == 13 || posicaoJogador == 20)
+        else if (posicao == 7 || posicao == 13 || posicao == 20)
         {
             Console.WriteLine($"\nEvento: Recuo de {penalidadeRecuo} casas!");
 
-            posicaoJogador -= penalidadeRecuo;
+            posicao -= penalidadeRecuo;
 
-            Console.WriteLine($"\nVocê está na posição: {posicaoJogador} de {limiteLinhaChegada}.");
+            Console.WriteLine($"\nVocê está na posição: {posicao} de {limiteLinhaChegada}.");
         }
 
-        ApresentarMensagemDoJogador(limiteLinhaChegada);
+        ApresentarMensagemDoJogador();
     }
 
     public static bool VenceuPartida()
     {
-        return posicaoJogador >= limiteLinhaChegada; // true / false
+        return posicao >= limiteLinhaChegada; // true / false
     }
-    private static void ApresentarMensagemDoJogador(int limiteLinhaChegada)
+
+    private static void ApresentarMensagemDoJogador()
     {
-        if (posicaoJogador >= limiteLinhaChegada)
+        if (posicao >= limiteLinhaChegada)
         {
             Console.WriteLine($"Parabéns! Você alcançou a linha de chegada.");
             Console.WriteLine("--------------------------------------");
